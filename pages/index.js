@@ -1,24 +1,20 @@
 import React from "react";
 import config from "../config.json";
 import styled from "styled-components";
-import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
 
 function HomePage() {
-  const estilosDaHomePage = {
-    // backgroundColor: "red" 
-  };
   const [valorDoFiltro, setValorDoFiltro] = React.useState("");
 
   return (
     <>
-      <CSSReset />
+
       <div style={{
         display: "flex",
         flexDirection: "column",
         flex: 1,
-        // backgroundColor: "red",
+
       }}>
         <Menu valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
         <Header />
@@ -32,16 +28,12 @@ function HomePage() {
 
 export default HomePage
 
-// function Menu() {
-//     return (
-//         <div>
-//             Menu
-//         </div>
-//     )
-// }
+
 
 
 const StyledHeader = styled.div`
+    background-color: ${({ theme }) => theme.backgroundLevel1};
+
     img {
         width: 80px;
         height: 80px;
@@ -67,7 +59,6 @@ function Header() {
   return (
     <StyledHeader>
       <StyledBanner bg={config.bg} />
-      {/* <img src="banner" /> */}
       <section className="user-info">
         <img src={`https://github.com/${config.github}.png`} />
         <div>
@@ -84,10 +75,9 @@ function Header() {
 }
 
 function Timeline({ searchValue, ...propriedades }) {
-  // console.log("Dentro do componente", propriedades.playlists);
+
   const playlistNames = Object.keys(propriedades.playlists);
-  // Statement
-  // Retorno por expressão
+
   return (
     <StyledTimeline>
       {playlistNames.map((playlistName) => {
